@@ -1,0 +1,35 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/admin_products.css">
+<h1>Danh sách sản phẩm</h1>
+<table border="1">
+    <tr>
+        <th>ID</th>
+        <th>Tên sản phẩm</th>
+        <th>Mô tả</th>
+        <th>Giá</th>
+        <th>Tác giả</th>
+        <th>Danh mục</th>
+        <th>Hình ảnh</th>
+        <th>Actions</th>
+    </tr>
+    {% for product in products %}
+    <tr>
+        <td>{{ product.id }}</td>
+        <td>{{ product.name }}</td>
+        <td>{{ product.description[:200] }}{% if product.description|length > 100 %}...{% endif %}</td>
+        <td>{{ product.price }}</td>
+        <td>{{ product.author }}</td>
+        <td>{{ product.category.name }}</td>
+        <td><img src="{{ product.image_url }}" alt="{{ product.name }}" style="max-width: 150px;"></td>
+        <td>
+            <a href="{{ url_for('admin_edit_product', product_id=product.id) }}">Sửa</a>
+            <form action="{{ url_for('admin_delete_product', product_id=product.id) }}" method="post" style="display:inline;" onsubmit="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">
+                <button type="submit">Xóa</button>
+            </form>
+        </td>
+    </tr>
+    {% endfor %}
+</table>
+{% endblock %}

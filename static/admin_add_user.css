@@ -1,0 +1,95 @@
+/* Đặt kiểu cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đặt kiểu cho phần chính của trang */
+main {
+    max-width: 600px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Đặt kiểu cho tiêu đề */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Đặt kiểu cho nhãn */
+label {
+    display: block;
+    margin: 10px 0 5px;
+    font-weight: bold;
+    margin-left: 20px;
+}
+
+/* Đặt kiểu cho các trường nhập liệu */
+input[type="text"],
+input[type="password"],
+input[type="email"] {
+    width: 400px;
+    padding: 10px;
+    margin-left: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+}
+
+/* Đặt kiểu cho checkbox */
+input[type="checkbox"] {
+    margin-left: 20px;
+    margin-top: 10px;
+    transform: scale(1.2); /* Tăng kích thước checkbox */
+    margin: 20px;
+}
+
+/* Đặt kiểu cho nhãn checkbox */
+label[for="is_admin"] {
+    display: inline;
+    font-weight: normal;
+    margin-left: 20px;
+}
+
+/* Đặt kiểu cho nút gửi */
+button {
+    width: 200px;
+    padding: 10px;
+    border: none;
+    border-radius: 4px;
+    background-color: #007bff;
+    color: #fff;
+    font-size: 16px;
+    cursor: pointer;
+    margin-left: 20px;
+    margin-bottom: 50px;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Đặt kiểu cho liên kết */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+/* Đặt kiểu cho thông báo */
+p {
+    text-align: center;
+    margin-top: 20px;
+}

@@ -1,0 +1,47 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<body>
+    <link rel="stylesheet" href="/static/admin_products.css">
+    <h1>Quản Lý Phản Hồi</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Người Gửi</th>
+                <th>Nội Dung</th>
+                <th>Phản Hồi</th>
+                <th>Thời Gian</th>
+                <th>Hành Động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for feedback in feedbacks %}
+            <tr>
+                <td>{{ feedback.id }}</td>
+                <td>{{ feedback.user.username }}</td>
+                <td>{{ feedback.content }}</td>
+                <td>
+                    {% if feedback.response %}
+                        {{ feedback.response }}
+                    {% else %}
+                        <form method="POST" action="{{ url_for('admin_respond_feedback', feedback_id=feedback.id) }}">
+                            <textarea name="response" rows="2" cols="30" placeholder="Nhập phản hồi của admin..."></textarea>
+                            <br>
+                            <button type="submit">Gửi Phản Hồi</button>
+                        </form>
+                    {% endif %}
+                </td>
+                <td>{{ feedback.created_at }}</td>
+                <td>
+                    <form method="POST" action="{{ url_for('admin_delete_feedback', feedback_id=feedback.id) }}">
+                        <button type="submit">Xóa</button>
+                    </form>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('admin_products') }}">Quay lại</a>
+</body>
+{% endblock %}

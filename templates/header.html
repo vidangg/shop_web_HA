@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    <link rel="stylesheet" href="/static/headerANDfooter.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <div class="logo">
+                <a href="{{ url_for('index') }}"><img src="/static/logo.png" alt="BookBuy Logo"></a>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="{{ url_for('index') }}">Trang chủ</a></li>
+                    <li><a href="{{ url_for('intro') }}">Giới thiệu</a></li>
+                    {% if current_user %}
+                        <li><a href="{{ url_for('profile') }}">Thông tin cá nhân</a></li>
+                        <li><a href="{{ url_for('view_cart') }}">Giỏ hàng</a></li>
+                        <li><a href="{{ url_for('feedback') }}">Đánh giá</a></li>
+                        <li><a href="{{ url_for('logout') }}" onclick="confirmLogout(event)">Đăng xuất</a></li>
+                    {% else %}
+                        <li><a href="{{ url_for('show_login') }}">Đăng nhập</a></li>
+                        <li><a href="{{ url_for('register') }}">Đăng ký</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+            <form action="{{ url_for('search') }}" method="get" class="search-form">
+                <input type="text" name="query" placeholder="Tìm kiếm sách...">
+                <button type="submit">Tìm kiếm</button>
+            </form>
+        </div>
+    </header>
+</body>
+<script>
+    function confirmLogout(event) {
+        if (!confirm("Bạn có muốn đăng xuất không?")) {
+            event.preventDefault();
+        }
+    }
+</script>
+</html>

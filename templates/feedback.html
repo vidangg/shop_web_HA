@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đánh giá - Website Bán Sách</title>
+</head>
+{% include 'header.html' %}
+<body>
+    <div class="feedback-container">
+        <h1>Gửi Phản Hồi</h1>
+        <link rel="stylesheet" href="{{ url_for('static', filename='feedback.css') }}">
+        
+        <!-- Form gửi phản hồi -->
+        <form method="POST" action="{{ url_for('feedback') }}">
+            <textarea name="content" rows="5" cols="40" placeholder="Nhập phản hồi của bạn tại đây..."></textarea>
+            <br>
+            <button type="submit">Gửi Phản Hồi</button>
+        </form>
+        
+        <!-- Hiển thị phản hồi đã gửi -->
+        <h2>Phản Hồi Của Bạn</h2>
+        <ul>
+            {% if feedbacks|length == 0 %}
+            <li>Chưa có phản hồi nào được gửi.</li>
+            {% else %}
+                {% for feedback in feedbacks %}
+                <li>
+                    <p><strong>{{ current_user.username }}:</strong> {{ feedback.content }}</p>
+                    {% if feedback.response %}
+                    <p><strong>Phản hồi từ Admin:</strong> {{ feedback.response }}</p>
+                    {% endif %}
+                    <form action="{{ url_for('delete_feedback', feedback_id=feedback.id) }}" method="post" onsubmit="return confirm('Bạn có chắc chắn muốn xóa phản hồi này không?');">
+                        <button type="submit">Xóa Phản Hồi</button>
+                    </form>
+                </li>
+                {% endfor %}
+            {% endif %}
+        </ul>
+        
+        <a href="{{ url_for('index') }}">Quay lại</a>
+    </div>
+</body>
+{% include 'footer.html' %}

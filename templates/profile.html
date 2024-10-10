@@ -1,0 +1,45 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thông tin cá nhân - Website Bán Sách</title>
+</head>
+{% include 'header.html' %}
+<link rel="stylesheet" href="/static/profile.css">
+<main>
+    <h1>Thông tin cá nhân</h1>
+    <p><strong>Tên người dùng:</strong> {{ user.username }}</p>
+    <p><strong>Email:</strong> {{ user.email }}</p>
+    <p><strong>Địa chỉ:</strong> {{ user.address }}</p>
+    <p><strong>Số tiền hiện có:</strong> {{ user.balance }}</p> <!-- Hiển thị số tiền -->
+    <p><strong>Ngày tham gia:</strong> {{ user.created_at.strftime('%d-%m-%Y') }}</p>
+    <div>
+        {% for order in orders %}
+            <h2>Đơn hàng {{ order.id }}: {{ order.status }}</h2>
+            <p><strong>Ngày đặt hàng:</strong> {{ order.created_at.strftime('%d-%m-%Y %H:%M:%S') }}</p>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Giá mỗi sản phẩm</th>
+                        <th>Thành tiền</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for item in order.items %}
+                        <tr>
+                            <td>{{ item.product.name }}</td>
+                            <td>{{ item.quantity }}</td>
+                            <td>{{ item.unit_price }}</td>
+                            <td>{{ item.unit_price * item.quantity }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <hr>
+        {% endfor %}
+    </div>
+    <a href="{{ url_for('index') }}">Quay về trang chủ</a>
+</main>
+{% include 'footer.html' %}

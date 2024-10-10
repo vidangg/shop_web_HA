@@ -1,0 +1,160 @@
+.product-list {
+    text-align: center;
+}
+
+.products {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: flex-start;
+    padding-left: 20px;
+    margin-bottom: 40px;
+}
+
+.product {
+    width: calc(20% - 10px); /* 25% để hiển thị 4 sản phẩm trên mỗi hàng */
+    height: 350px;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    transition: transform 0.2s;
+    text-align: center;
+    margin-right: 20px; /* Khoảng cách giữa các sản phẩm */
+}
+
+.product img {
+    width: 100%;
+    height: 150px;
+    object-fit: cover;
+}
+
+.product h3 {
+    margin: 10px 0;
+}
+
+.product p {
+    margin: 5px 0;
+}
+
+.product button {
+    background-color: #007bff; /* Màu xanh nước biển */
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    margin: 5px 2px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.product button:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+}
+
+.product:hover {
+    transform: scale(1.05);
+}
+
+/* Điều chỉnh đặc biệt cho sản phẩm cuối cùng khi có 4 sản phẩm */
+.products.four-products .product:nth-child(4n) {
+    margin-right: 0; /* Xóa margin phải của sản phẩm cuối cùng */
+}
+
+/* Phân trang container */
+.pagination {
+    display: flex;
+    justify-content: center; /* Căn giữa các liên kết phân trang */
+    margin: 20px 0; /* Khoảng cách trên và dưới của phân trang */
+}
+
+/* Phân trang liên kết */
+.pagination a,
+.pagination span {
+    display: inline-block;
+    padding: 8px 16px; /* Khoảng cách bên trong các liên kết */
+    margin: 0 4px; /* Khoảng cách giữa các liên kết */
+    text-decoration: none; /* Bỏ gạch chân */
+    color: #007bff; /* Màu của liên kết */
+    border: 1px solid #007bff; /* Viền của liên kết */
+    border-radius: 4px; /* Bo góc liên kết */
+    transition: background-color 0.3s, color 0.3s; /* Hiệu ứng chuyển đổi */
+}
+
+/* Phân trang liên kết khi di chuột qua */
+.pagination a:hover,
+.pagination a:focus {
+    background-color: #007bff; /* Màu nền khi di chuột */
+    color: #fff; /* Màu chữ khi di chuột */
+}
+
+/* Phân trang liên kết đang được chọn */
+.pagination .active {
+    background-color: #007bff; /* Màu nền của trang hiện tại */
+    color: #fff; /* Màu chữ của trang hiện tại */
+    border: 1px solid #007bff; /* Viền của trang hiện tại */
+}
+
+/* Phân trang liên kết không có hiệu ứng */
+.pagination span {
+    background-color: #f1f1f1; /* Màu nền của trang không liên kết */
+    color: #333; /* Màu chữ của trang không liên kết */
+    border: 1px solid #ddd; /* Viền của trang không liên kết */
+}
+
+/* Căn lề cho tiêu đề chính */
+h1 {
+    margin-left: 20px; /* Căn lề trái cho tiêu đề chính */
+}
+
+/* Căn lề cho tiêu đề phụ */
+h4 {
+    margin-left: 20px; /* Căn lề trái cho tiêu đề phụ */
+    color: #555; /* Màu chữ cho tiêu đề phụ (tùy chọn) */
+}
+h2 {
+    margin-bottom: 40px;
+    margin-top: 40px;
+}
+
+a {
+    text-decoration: none; /* Bỏ gạch chân */
+    color: inherit; /* Kế thừa màu sắc từ phần tử cha */
+}
+
+/* CSS cho form tìm kiếm theo danh mục */
+.search-form {
+    margin-top: 35px;
+    margin-left: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.search-form label {
+    font-weight: bold;
+    margin-right: 10px;
+}
+
+.search-form select {
+    padding: 5px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.search-form button {
+    padding: 5px 15px;
+    font-size: 16px;
+    background-color: #007bff; /* Màu xanh nước biển */
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.search-form button:hover {
+    background-color: #0056b3; /* Màu xanh đậm hơn khi hover */
+}

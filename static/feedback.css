@@ -1,0 +1,116 @@
+/* feedback.css */
+
+/* Đặt kiểu cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đặt kiểu cho phần chính của phản hồi */
+.feedback-container {
+    padding: 20px;
+    max-width: 800px; /* Điều chỉnh kích thước tối đa của vùng chứa phản hồi */
+    margin: 0 auto; /* Căn giữa phần phản hồi */
+    background-color: #fff; /* Màu nền trắng cho phần phản hồi */
+    border-radius: 8px; /* Bo góc cho phần phản hồi */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ cho phần phản hồi */
+}
+
+/* Đặt kiểu cho tiêu đề phản hồi */
+.feedback-container h1 {
+    text-align: center;
+    color: #333;
+    margin-top: 0; /* Loại bỏ khoảng cách trên tiêu đề trong phần phản hồi */
+    margin-bottom: 20px; /* Khoảng cách dưới tiêu đề */
+}
+
+/* Đặt kiểu cho form phản hồi */
+.feedback-container form {
+    max-width: 100%; /* Đảm bảo form không vượt quá kích thước phần chứa */
+    margin: 0 auto; /* Căn giữa form */
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Đặt kiểu cho textarea */
+.feedback-container form textarea {
+    width: 100%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box;
+    margin-bottom: 15px;
+    resize: vertical; /* Cho phép thay đổi chiều cao */
+}
+
+/* Đặt kiểu cho nút gửi */
+.feedback-container form button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Hiệu ứng khi di chuột qua nút gửi */
+.feedback-container form button:hover {
+    background-color: #0056b3;
+}
+
+/* Đặt kiểu cho danh sách phản hồi */
+.feedback-container ul {
+    list-style-type: none; /* Xóa dấu chấm ở đầu danh sách */
+    padding: 0; /* Xóa khoảng cách bên trong danh sách */
+    margin: 0; /* Xóa khoảng cách bên ngoài danh sách */
+}
+
+/* Đặt kiểu cho từng mục trong danh sách phản hồi */
+.feedback-container ul li {
+    background-color: #fff; /* Màu nền trắng cho từng mục */
+    border: 1px solid #ddd; /* Đường viền nhạt cho từng mục */
+    border-radius: 4px; /* Bo góc của từng mục */
+    padding: 15px; /* Khoảng cách bên trong từng mục */
+    margin-bottom: 10px; /* Khoảng cách dưới từng mục */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Tạo bóng nhẹ cho từng mục */
+}
+
+/* Đặt kiểu cho các đoạn văn bản trong phản hồi */
+.feedback-container ul li p {
+    margin: 5px 0; /* Khoảng cách trên và dưới đoạn văn bản */
+    line-height: 1.5; /* Tăng khoảng cách giữa các dòng */
+}
+
+/* Đặt kiểu cho các phần mạnh trong phản hồi */
+.feedback-container ul li p strong {
+    color: #007bff; /* Màu chữ nổi bật cho các phần mạnh */
+}
+
+/* Đặt kiểu cho liên kết quay lại */
+.feedback-container a {
+    display: block; /* Hiển thị liên kết như một khối */
+    text-align: center; /* Căn giữa liên kết */
+    margin-top: 20px; /* Khoảng cách trên liên kết */
+    color: #007bff; /* Màu chữ của liên kết */
+    text-decoration: none; /* Xóa gạch chân của liên kết */
+    font-size: 16px; /* Kích thước chữ của liên kết */
+}
+
+/* Hiệu ứng khi di chuột qua liên kết */
+.feedback-container a:hover {
+    text-decoration: underline; /* Thêm gạch chân khi di chuột qua liên kết */
+}
+
+h2 {
+    margin-top: 20px;
+    padding: 10px;
+}

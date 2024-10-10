@@ -1,0 +1,32 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<h1>Thêm người dùng mới</h1>
+<link rel="stylesheet" href="/static/admin_add_user.css">
+<form action="{{ url_for('admin_add_user') }}" method="post">
+    <label for="username">Tên người dùng:</label>
+    <input type="text" name="username" id="username" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" required>
+    <br>
+    <label for="address">Địa chỉ:</label>
+    <input type="text" name="address" id="address">
+    <br>
+    <label for="password">Mật khẩu:</label>
+    <input type="password" name="password" id="password" required>
+    <br>
+    <label for="confirm_password">Xác nhận mật khẩu:</label>
+    <input type="password" name="confirm_password" id="confirm_password" required>
+    <br>
+    <label for="is_admin">Quyền admin:</label>
+    <input type="checkbox" name="is_admin" id="is_admin">
+    <br>
+    <label for="balance">Số dư:</label>  <!-- Thêm trường hiển thị số dư -->
+    <input type="number" name="balance" id="balance" step="0.01" value="0.00" required>
+    <br>
+    <button type="submit">Thêm người dùng</button>
+    <a href="{{ url_for('admin_products') }}">Quay lại</a>
+</form>
+
+{% endblock %}

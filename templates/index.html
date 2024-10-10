@@ -1,0 +1,66 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trang chủ - Website Bán Sách</title>
+</head>
+{% include 'header.html' %}
+
+<link rel="stylesheet" href="/static/index.css">
+<h1>Xin chào, {{ current_user.username if current_user else 'Khách' }}</h1>
+
+{% if current_user %}
+    <h4>Mua ngay những cuốn sách kẻo hết hàng</h4>
+{% else %}
+    <h4>Bạn muốn mua những cuốn sách, đăng ký tài khoản để mua ngay nào</h4>
+{% endif %}
+
+<!-- Form tìm kiếm -->
+<form class="search-form" method="get" action="{{ url_for('index') }}">
+    <label for="category">Chọn danh mục:</label>
+    <select id="category" name="category">
+        <option value="">Tất cả</option>
+        {% for category in categories %}
+        <option value="{{ category.id }}" {% if category.id == selected_category %}selected{% endif %}>{{ category.name }}</option>
+        {% endfor %}
+    </select>
+    <button type="submit">Tìm kiếm</button>
+</form>
+
+<div class="product-list">
+    <h2>DANH SÁCH SẢN PHẨM CỦA SHOP</h2>
+    <div class="products four-products">
+        {% for product in new_products.items %}
+        <div class="product">
+            <a href="{{ url_for('product_detail', product_id=product.id) }}">
+                <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>Giá: {{ product.price }} VNĐ</p>
+            </a>
+            <form action="{{ url_for('buy_product', product_id=product.id) }}" method="post" onsubmit="confirmPurchase(event)">
+                <button type="submit">Mua ngay</button>
+            </form>
+            <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+                <button type="submit">Thêm vào giỏ hàng</button>
+            </form>
+        </div>
+        {% endfor %}
+    </div>
+    <div class="pagination">
+        {% if new_products.has_prev %}
+        <a href="{{ url_for('index', page=new_products.prev_num) }}">&laquo; Trang trước</a>
+        {% endif %}
+        <span>Trang {{ new_products.page }} / {{ new_products.pages }}</span>
+        {% if new_products.has_next %}
+        <a href="{{ url_for('index', page=new_products.next_num) }}">Trang sau &raquo;</a>
+        {% endif %}
+    </div>
+</div>
+    <script>
+        function confirmPurchase(event) {
+            if (!confirm("Bạn có chắc chắn muốn mua sản phẩm này không?")) {
+                event.preventDefault(); // Ngăn chặn hành động gửi form nếu người dùng chọn "Không"
+            }
+        }
+    </script>
+{% include 'footer.html' %}

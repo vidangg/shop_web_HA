@@ -1,0 +1,31 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<h1>Sửa thông tin người dùng</h1>
+
+<form action="{{ url_for('admin_edit_user', user_id=user.id) }}" method="post">
+    <label for="username">Tên người dùng:</label>
+    <input type="text" name="username" id="username" value="{{ user.username }}" required>
+    <br>
+    <label for="email">Email:</label>
+    <input type="email" name="email" id="email" value="{{ user.email }}" required>
+    <br>
+    <label for="address">Địa chỉ:</label>
+    <input type="text" name="address" id="address" value="{{ user.address }}">
+    <br>
+    <label for="balance">Số dư tiền:</label> <!-- Trường mới cho số dư tiền -->
+    <input type="number" name="balance" id="balance" value="{{ user.balance }}" step="0.01" min="0">
+    <br>
+    <label for="password">Mật khẩu mới (để trống nếu không thay đổi):</label>
+    <input type="password" name="password" id="password">
+    <br>
+    <label for="confirm_password">Xác nhận mật khẩu mới:</label>
+    <input type="password" name="confirm_password" id="confirm_password">
+    <br>
+    <label for="is_admin">Quyền admin:</label>
+    <input type="checkbox" name="is_admin" id="is_admin" {% if user.is_admin %}checked{% endif %}>
+    <br>
+    <button type="submit">Cập nhật thông tin</button>
+</form>
+
+{% endblock %}

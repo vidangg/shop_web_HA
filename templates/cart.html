@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Giỏ hàng - Website Bán Sách</title>
+</head>
+{% include 'header.html' %}
+<link rel="stylesheet" href="/static/cart.css">
+<div class="cart-container">
+    <h1>Giỏ hàng của bạn</h1>
+    <ul class="cart-items">
+        {% if cart.items|length == 0 %}
+        <li>Không có sản phẩm nào, <a href="{{ url_for('index') }}">nhấn vào mua ngay</a>.</li>
+        {% else %}
+            {% for item in cart.items %}
+            <li class="cart-item">
+                <span class="product-name">{{ item.product.name }}</span> - 
+                Giá: <span class="product-price">{{ item.product.price }}</span> VNĐ - 
+                Số lượng: 
+                <form action="{{ url_for('update_cart', item_id=item.id) }}" method="post" class="update-form">
+                    <input type="hidden" name="item_id" value="{{ item.id }}">
+                    <input type="number" name="quantity" value="{{ item.quantity }}" min="1" max="99999" onchange="this.form.submit()">
+                    <button type="submit">Cập nhật</button>
+                </form>
+                <form action="{{ url_for('remove_from_cart', item_id=item.id) }}" method="post" class="remove-form" onsubmit="return confirmAction('Bạn có chắc chắn muốn xóa sản phẩm này không?');">
+                    <button type="submit">Xóa</button>
+                </form>
+                <form action="{{ url_for('buy_product', product_id=item.product.id) }}" method="post" class="buy-form" onsubmit="return confirmAction('Bạn có chắc chắn muốn mua sản phẩm này không?');">
+                    <button type="submit">Mua hàng</button>
+                </form>
+                <br>
+                <strong>Tổng giá:</strong> <span class="item-total-price">{{ item.product.price * item.quantity }}</span> VNĐ
+            </li>
+            {% endfor %}
+        {% endif %}
+    </ul>
+    
+    <a href="{{ url_for('index') }}" class="back-to-home">Quay lại trang chủ</a>
+</div>
+{% include 'footer.html' %}
+
+<script>
+    function confirmAction(message) {
+        return confirm(message);
+    }
+</script>

@@ -1,0 +1,76 @@
+/* Đặt kiểu cho toàn bộ trang */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    margin: 0;
+    padding: 0;
+}
+
+/* Đặt kiểu cho phần chính của trang */
+main {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Đặt kiểu cho tiêu đề */
+h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Đặt kiểu cho các đoạn văn thông tin cá nhân */
+p {
+    font-size: 16px;
+    margin: 10px 0;
+}
+
+/* Đặt kiểu cho các nhãn trong thông tin cá nhân */
+strong {
+    font-weight: bold;
+}
+
+/* Đặt kiểu cho các tiêu đề đơn hàng */
+h2 {
+    color: #007bff;
+    margin: 20px 0 10px;
+}
+
+/* Đặt kiểu cho bảng đơn hàng */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 10px 0;
+}
+
+table th,
+table td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+table th {
+    background-color: #f2f2f2;
+    font-weight: bold;
+}
+
+table tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+table tr:hover {
+    background-color: #f1f1f1;
+}
+
+/* Đặt kiểu cho đường phân cách giữa các đơn hàng */
+hr {
+    border: 0;
+    border-top: 1px solid #ddd;
+    margin: 20px 0;
+}

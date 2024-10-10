@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Admin - Manage Products{% endblock %}</title>
+    <link rel="stylesheet" href="/static/headerANDfooter.css">
+</head>
+<body>
+    <header>
+        <h1>QUẢN LÝ SẢN PHẨM</h1>
+        <nav>
+            <ul>
+                <li><a href="{{ url_for('admin_products') }}">Quản lý</a></li>
+                <li><a href="{{ url_for('admin_add_product') }}">Thêm sản phẩm</a></li>
+                <li><a href="{{ url_for('admin_users') }}">Người dùng</a></li>
+                <li><a href="{{ url_for('admin_orders') }}">Đơn hàng</a></li>
+                <li><a href="{{ url_for('admin_feedback') }}">Đánh giá</a></li>
+                <li><a href="{{ url_for('logout') }}">Đăng xuất</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-section support">
+                <h3>HỖ TRỢ KHÁCH HÀNG</h3>
+                <p>Sản phẩm & Đơn hàng: 0977 241 816</p>
+                <p>Kỹ thuật & Bảo hành: 0977 241 816</p>
+                <p>Điện thoại: (028) 3820 7153 (giờ hành chính)</p>
+                <p>Email: anh.dao2002.36@gmail.com</p>
+                <p>Địa chỉ: PTIT, Mộ Lao, Hà Đông, Hà Nội</p>
+                <p>Sơ đồ đường đi</p>
+            </div>
+    
+            <div class="footer-section help">
+                <h3>TRỢ GIÚP</h3>
+                <p><a href="#">Hướng dẫn mua hàng</a></p>
+                <p><a href="#">Phương thức thanh toán</a></p>
+                <p><a href="#">Phương thức vận chuyển</a></p>
+                <p><a href="#">Chính sách đổi - trả</a></p>
+                <p><a href="#">Chính sách bồi hoàn</a></p>
+                <p><a href="#">Câu hỏi thường gặp (FAQs)</a></p>
+            </div>
+    
+            <div class="footer-section account">
+                <h3>TÀI KHOẢN CỦA BẠN</h3>
+                <p><a href="#">Cập nhật tài khoản</a></p>
+                <p><a href="#">Giỏ hàng</a></p>
+                <p><a href="#">Lịch sử giao dịch</a></p>
+                <p><a href="#">Sản phẩm yêu thích</a></p>
+                <p><a href="#">Kiểm tra đơn hàng</a></p>
+            </div>
+    
+            <div class="footer-section about">
+                <h3>BOOKBUY</h3>
+                <p><a href="#">Giới thiệu Safegate.vn</a></p>
+                <p><a href="#">Safegate trên Facebook</a></p>
+                <p><a href="#">Liên hệ BookBuy</a></p>
+                <p><a href="#">Đặt hàng theo yêu cầu</a></p>
+                <p><a href="#">Tích lũy BBxu</a></p>
+                <p><a href="#">Safegate.vn - </a></p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>&copy; 2024 Smart Cyber Security. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>

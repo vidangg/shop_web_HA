@@ -1,0 +1,34 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+    <h1>SỬA SẢN PHẨM</h1>
+    <link rel="stylesheet" href="/static/admin_add_product.css">
+    <form action="{{ url_for('admin_edit_product', product_id=product.id) }}" method="post">
+        <label for="name">Tên sản phẩm:</label>
+        <input type="text" id="name" name="name" value="{{ product.name }}" required><br>
+
+        <label for="description">Mô tả:</label>
+        <textarea id="description" name="description">{{ product.description }}</textarea><br>
+
+        <label for="price">Giá:</label>
+        <input type="number" id="price" name="price" step="0.01" value="{{ product.price }}" required><br>
+
+        <label for="image_url">Image URL:</label>
+        <input type="text" id="image_url" name="image_url" value="{{ product.image_url }}"><br>
+
+        <label for="author">Tác giả:</label>
+        <input type="text" id="author" name="author" value="{{ product.author }}"><br>
+
+        <label for="category">Danh mục:</label>
+        <select id="category" name="category">
+            {% for category in categories %}
+                <option value="{{ category.id }}" {% if category.id == product.category_id %}selected{% endif %}>
+                    {{ category.name }}
+                </option>
+            {% endfor %}
+        </select><br>
+
+        <button type="submit">Cập nhật</button>
+        <a href="{{ url_for('admin_products') }}">Quay lại</a>
+    </form>
+{% endblock %}

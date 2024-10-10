@@ -1,0 +1,46 @@
+{% extends "admin_base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="/static/admin_products.css">
+    <h2>Danh sách đơn hàng</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Mã đơn hàng</th>
+                <th>Người đặt hàng</th>
+                <th>Sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Thành tiền</th>
+                <th>Ngày đặt hàng</th>
+                <th>Trạng thái</th>
+                <th>Hành động</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for order in orders %}
+                {% for item in order.items %}
+                    <tr>
+                        <td>{{ order.id }}</td>
+                        <td>{{ order.user.username }}</td>
+                        <td>{{ item.product.name }}</td> <!-- Sử dụng item.product để lấy tên sản phẩm từ OrderItem -->
+                        <td>{{ item.quantity }}</td>
+                        <td>{{ item.unit_price * item.quantity }}</td> <!-- tính thành tiền từ giá và số lượng -->
+                        <td>{{ order.created_at.strftime("%d/%m/%Y %H:%M:%S") }}</td>
+                        <td>{{ order.status }}</td>
+                        <td>
+                            {% if order.status == 'đang chờ được duyệt' %}
+                                <form action="{{ url_for('approve_order', order_id=order.id) }}" method="post" style="display: inline;">
+                                    <button type="submit">Duyệt</button>
+                                </form>
+                                <form action="{{ url_for('reject_order', order_id=order.id) }}" method="post" style="display: inline;">
+                                    <button type="submit">Không duyệt</button>
+                                </form>
+                            {% endif %}
+                        </td>
+                    </tr>
+                {% endfor %}
+            {% endfor %}
+        </tbody>
+    </table>
+    <a href="{{ url_for('admin_products') }}">Quay lại</a>
+{% endblock %}

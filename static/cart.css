@@ -1,0 +1,99 @@
+.cart-container {
+    padding: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.cart-items {
+    list-style: none;
+    padding: 0;
+}
+
+.cart-item {
+    margin-bottom: 15px;
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.product-name {
+    margin-left: 20px;
+    flex: 1;
+}
+
+.cart-item form {
+    margin: 0;
+    flex: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.update-form, .remove-form, .buy-form {
+    margin-left: 10px;
+}
+
+input[type="number"] {
+    width: 50px;
+    padding: 5px;
+    margin-right: 10px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+}
+
+button {
+    padding: 8px 12px;
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    margin-left: 10px;
+    min-width: 80px;
+}
+
+button:hover {
+    background-color: #2980b9;
+}
+
+.flash-message {
+    border: 1px solid #d4edda;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+}
+
+.flash-message p {
+    margin: 0;
+}
+
+.flash-message .success {
+    color: #155724;
+    background-color: #d4edda;
+    border-color: #c3e6cb;
+}
+
+.flash-message .danger {
+    color: #721c24;
+    background-color: #f8d7da;
+    border-color: #f5c6cb;
+}
+
+.back-to-home {
+    display: block;
+    margin-top: 20px;
+    text-align: center;
+    text-decoration: none;
+    color: #007bff;
+}
+
+.back-to-home:hover {
+    text-decoration: underline;
+}
+
+h1 {
+    margin-bottom: 10px;
+}

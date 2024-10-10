@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kết quả tìm kiếm</title>
+    <link rel="stylesheet" href="/static/index.css">
+</head>
+<body>
+    {% include 'header.html' %}
+    <h1>Kết quả tìm kiếm cho "{{ query }}"</h1>
+    <div class="product-list">
+        {% if products %}
+            <div class="products">
+                {% for product in products %}
+                <div class="product">
+                    <a href="{{ url_for('product_detail', product_id=product.id) }}">
+                        <img src="{{ product.image_url }}" alt="{{ product.name }}">
+                        <h3>{{ product.name }}</h3>
+                        <p>Giá: {{ product.price }} VNĐ</p>
+                    </a>
+                    <form action="{{ url_for('buy_product', product_id=product.id) }}" method="post">
+                        <button type="submit">Mua hàng</button>
+                    </form>
+                    <form action="{{ url_for('add_to_cart', product_id=product.id) }}" method="post">
+                        <button type="submit">Thêm vào giỏ hàng</button>
+                    </form>
+                </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>Không tìm thấy sản phẩm nào với từ khóa "{{ query }}".</p>
+        {% endif %}
+    </div>
+    <a href="{{ url_for('index') }}" class="back-to-home">Quay lại trang chủ</a>
+    {% include 'footer.html' %}
+</body>
+</html>
